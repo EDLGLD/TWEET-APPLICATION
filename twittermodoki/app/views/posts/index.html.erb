@@ -1,0 +1,32 @@
+<br>
+<br>
+
+<p id="notice"><%= notice %></p>
+
+<br>
+<br>
+
+<div>
+  <%= render 'form', post: @post %>
+</div>
+
+<div class="section_title">
+  <h1>タイムライン</h1>
+</div>
+
+<table>
+  <tbody>
+    <% @posts.reverse.each do |post| %>
+      <tr>
+        <td colspan="3">
+          <%= content_tag :div, post.content, class: 'TEXT_FORMAT1' %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= link_to '詳細', post %></td>
+        <td><%= link_to '編集', edit_post_path(post) %></td>
+        <td><%= link_to '削除', post, method: :delete, data: { confirm: '削除しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
